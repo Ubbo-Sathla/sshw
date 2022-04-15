@@ -1,4 +1,4 @@
-module github.com/yinheli/sshw
+module github.com/Ubbo-Sathla/sshw
 
 go 1.18
 
@@ -7,6 +7,7 @@ require (
 	github.com/kevinburke/ssh_config v1.2.0
 	github.com/magefile/mage v1.8.0
 	github.com/manifoldco/promptui v0.3.3-0.20190221150523-ae9f05e7444d
+	github.com/pquerna/otp v1.3.0
 	golang.org/x/crypto v0.0.0-20180718160520-a2144134853f
 	gopkg.in/yaml.v2 v2.2.8
 )
@@ -15,6 +16,7 @@ require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/alecthomas/gometalinter v2.0.11+incompatible // indirect
 	github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf // indirect
+	github.com/boombuler/barcode v1.0.1-0.20190219062509-6c824513bacc // indirect
 	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect
 	github.com/client9/misspell v0.3.4 // indirect
 	github.com/golang/lint v0.0.0-20181026193005-c67002cb31c3 // indirect

@@ -7,8 +7,8 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/Ubbo-Sathla/sshw"
 	"github.com/manifoldco/promptui"
-	"github.com/yinheli/sshw"
 )
 
 const prev = "-parent-"

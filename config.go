@@ -24,6 +24,7 @@ type Node struct {
 	KeyPath        string           `yaml:"keypath"`
 	Passphrase     string           `yaml:"passphrase"`
 	Password       string           `yaml:"password"`
+	Mfa            string           `yaml:"mfa"`
 	CallbackShells []*CallbackShell `yaml:"callback-shells"`
 	Children       []*Node          `yaml:"children"`
 	Jump           []*Node          `yaml:"jump"`
