@@ -88,13 +88,18 @@ func genSSHConfig(node *Node) *defaultClient {
 		for i, q := range questions {
 			fmt.Print(q)
 			if echos[i] {
-				scan := bufio.NewScanner(os.Stdin)
-				if scan.Scan() {
-					answers = append(answers, scan.Text())
-				}
-				err := scan.Err()
-				if err != nil {
-					return nil, err
+				if node.RegexpMfa(q) {
+					answers = append(answers, GeneratePassCode(node.Mfa))
+					fmt.Println()
+				} else {
+					scan := bufio.NewScanner(os.Stdin)
+					if scan.Scan() {
+						answers = append(answers, scan.Text())
+					}
+					err := scan.Err()
+					if err != nil {
+						return nil, err
+					}
 				}
 			} else {
 				b, err := terminal.ReadPassword(int(syscall.Stdin))

@@ -1,71 +1,30 @@
 # sshw
 
-[![Build Status](https://travis-ci.org/yinheli/sshw.svg?branch=master)](https://travis-ci.org/yinheli/sshw)
+**仅添加支持google authenticator令牌**
+> 正版连接 <https://github.com/yinheli/sshw>
 
-ssh client wrapper for automatic login.
+## install sshw command
 
-![usage](./assets/sshw-demo.gif)
+1. Install command
+    ```
+    go install github.com/Ubbo-Sathla/sshw/cmd/sshw@latest
+    ```
+2. Config example
 
-## install
+    ```yaml
+    - { name: dev server fully configured, user: appuser, host: 192.168.8.35, port: 22, password: 123456 ,mfa: "otpauth://totp/Ubbo-Sathla?algorithm=SHA1&digits=6&issuer=13123&period=30&secret=123456" }
+    ```
 
-use `go get`
+## otp command
 
-```
-go get -u github.com/yinheli/sshw/cmd/sshw
-```
+1. Install command
 
-or download binary from [releases](//github.com/yinheli/sshw/releases).
+    ```
+    go install github.com/Ubbo-Sathla/sshw/cmd/otp@master
+    ```
 
-## config
+2. Command example
 
-put config file in `~/.sshw` or `~/.sshw.yml` or `~/.sshw.yaml` or `./.sshw` or `./.sshw.yml` or `./.sshw.yaml`.
-
-config example:
-
-```yaml
-- { name: dev server fully configured, user: appuser, host: 192.168.8.35, port: 22, password: 123456 }
-- { name: dev server with key path, user: appuser, host: 192.168.8.35, port: 22, keypath: /root/.ssh/id_rsa }
-- { name: dev server with passphrase key, user: appuser, host: 192.168.8.35, port: 22, keypath: /root/.ssh/id_rsa, passphrase: abcdefghijklmn}
-- { name: dev server without port, user: appuser, host: 192.168.8.35 }
-- { name: dev server without user, host: 192.168.8.35 }
-- { name: dev server without password, host: 192.168.8.35 }
-- { name: ⚡️ server with emoji name, host: 192.168.8.35 }
-- { name: server with alias, alias: dev, host: 192.168.8.35 }
-- name: server with jump
-  user: appuser
-  host: 192.168.8.35
-  port: 22
-  password: 123456
-  jump:
-  - user: appuser
-    host: 192.168.8.36
-    port: 2222
-
-
-# server group 1
-- name: server group 1
-  children:
-  - { name: server 1, user: root, host: 192.168.1.2 }
-  - { name: server 2, user: root, host: 192.168.1.3 }
-  - { name: server 3, user: root, host: 192.168.1.4 }
-
-# server group 2
-- name: server group 2
-  children:
-  - { name: server 1, user: root, host: 192.168.2.2 }
-  - { name: server 2, user: root, host: 192.168.3.3 }
-  - { name: server 3, user: root, host: 192.168.4.4 }
-```
-
-# callback
-```
-- name: dev server fully configured
-  user: appuser
-  host: 192.168.8.35
-  port: 22
-  password: 123456
-  callback-shells:
-  - {cmd: 2}
-  - {delay: 1500, cmd: 0}
-  - {cmd: 'echo 1'}
- ```
+    ```bash
+    otp -mfa "otpauth://totp/example.com:ubbo-sathla@example.com?algorithm=SHA1&digits=6&issuer=example.com&period=30&secret=7F2TQQA2OVO47AQJ6V32K2HXFNB5I77F"
+    ```
